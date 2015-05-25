@@ -1,0 +1,2 @@
+pelcoMessage	KEYWORD1
+isADirection	KEYWORD2
