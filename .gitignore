@@ -30,3 +30,5 @@ obj/
 ehthumbs.db
 Thumbs.db
 Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileAircraftControls.prefab
+*.exe
+*.o
