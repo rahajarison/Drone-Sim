@@ -1,6 +1,6 @@
 #include			<iostream>
 #include			<stdlib.h>
-#include			"pelcoMessage.hh"
+#include			"PelcoMessage.hh"
 
 int					main(int argc, char *argv[])
 {
@@ -9,7 +9,7 @@ int					main(int argc, char *argv[])
 	byte			rawBytes[7] = {
 		0xFF, 0x01, 0x00, 0x04, 0x3F, 0x00, 0x44
 	};
-	pelcoMessage	message(rawBytes);
+	PelcoMessage	message(rawBytes);
 
 	if (!message.isCorrect())
 		std::cerr << "Incorrect format" << std::endl;
