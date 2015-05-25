@@ -1,0 +1,5 @@
+To disable on the arduino:
+	the byte typedef (PelcoMessage.h)
+	the iostream include (PelcoMessage.cpp)
+To enable on the arduino:
+	the arduino.h include (PelcoMessage.cpp)

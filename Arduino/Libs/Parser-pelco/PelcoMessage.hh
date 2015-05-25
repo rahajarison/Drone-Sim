@@ -13,21 +13,29 @@ public:
 	PelcoMessage(const byte rawMessage[7]);
 	virtual ~PelcoMessage();
 	bool						isCorrect() const;
-	bool						isADirection() const;
-	bool						isTiltUp() const;
-	bool						isTiltDown() const;
-	bool						isPanLeft() const;
+	bool						isADirectionCommand() const;
+	bool						isAThrustCommand() const;
+	bool						isAStopCommand() const;
 	bool						isPanRight() const;
+	bool						isPanLeft() const;
+	bool						isTiltDown() const;
+	bool						isTiltUp() const;
+	bool						isThrottleUp() const;
+	bool						isThrottleDown() const;
+	byte						getByte(unsigned char offset) const;
 
 private:
 	byte						calculateChecksum() const;
 	bool						isTilt(byte direction) const;
 	bool						isPan(byte direction) const;
+	bool						isThrottle(byte direction) const;
 
 	static const byte 			PANRIGHT;
 	static const byte 			PANLEFT;
 	static const byte 			TILTDOWN;
 	static const byte 			TILTUP;
+	static const byte 			THROTTLEUP;
+	static const byte 			THROTTLEDOWN;
 
 	byte						_syncByte;
 	byte						_cameraAddress;
