@@ -1,6 +1,6 @@
 CC=			g++
 CFLAGS=		-Wall
-SRC=		PelcoMessage.cpp main.cpp
+SRC=		PelcoMessage.cpp main.cpp PelcoBuffer.cpp Arduino.cpp
 OBJ=		$(SRC:.cpp=.o)
 TARGET=		parser.exe
 

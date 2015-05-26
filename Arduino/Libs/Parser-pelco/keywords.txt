@@ -1,2 +1,13 @@
-pelcoMessage	KEYWORD1
+PelcoMessage	KEYWORD1
 isADirection	KEYWORD2
+isCorrect	KEYWORD2
+isADirectionCommand	KEYWORD2
+isAThrustCommand	KEYWORD2
+isAStopCommand	KEYWORD2
+isPanRight	KEYWORD2
+isPanLeft	KEYWORD2
+isTiltDown	KEYWORD2
+isTiltUp	KEYWORD2
+isThrottleUp	KEYWORD2
+isThrottleDown	KEYWORD2
+getByte	KEYWORD2

@@ -1,6 +1,10 @@
 #include			<iostream>
 #include			<stdlib.h>
-#include			"PelcoMessage.hh"
+#include			"PelcoBuffer.h"
+#include			"PelcoMessage.h"
+
+MockSerial			Serial;
+MockSerial			Serial3;
 
 int					main(int argc, char *argv[])
 {

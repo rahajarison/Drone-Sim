@@ -1,17 +1,19 @@
-#ifndef							PELCOMESSAGE_HH_
-# define						PELCOMESSAGE_HH_
+#ifndef							PELCOMESSAGE_H_
+# define						PELCOMESSAGE_H_
 
-# include						<bitset>
+# include						"Arduino.h" // to uncomment on the arduino-board
 
-# define	SYNCVALUE			(0xFF)
+// # include						<bitset>
 
-typedef std::bitset<8>			byte; // To disable on the arduino
+// typedef std::bitset<8>			byte; // To disable on the arduino
 
 class PelcoMessage
 {
 public:
 	PelcoMessage(const byte rawMessage[7]);
+	PelcoMessage(const PelcoBuffer &buffer);
 	virtual ~PelcoMessage();
+
 	bool						isCorrect() const;
 	bool						isADirectionCommand() const;
 	bool						isAThrustCommand() const;
@@ -23,6 +25,7 @@ public:
 	bool						isThrottleUp() const;
 	bool						isThrottleDown() const;
 	byte						getByte(unsigned char offset) const;
+	// TODO add yaw	
 
 private:
 	byte						calculateChecksum() const;
@@ -46,4 +49,4 @@ private:
 	byte						_checksum;
 };
 
-#endif /* !PELCOMESSAGE_HH_ */
+#endif /* !PELCOMESSAGE_H_ */

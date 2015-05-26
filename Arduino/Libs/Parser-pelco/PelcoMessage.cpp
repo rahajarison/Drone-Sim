@@ -1,7 +1,7 @@
-#include			<iostream> // To comment on the arduino-board
-// #include			"Arduino.h" // to uncomment on the arduino-board
-
-#include			"PelcoMessage.hh"
+// #include			<iostream> // To comment on the arduino-board
+#include			"Arduino.h"
+#include			"PelcoBuffer.h"
+#include			"PelcoMessage.h"
 
 const byte PelcoMessage::PANRIGHT     = 2;	// Binary : b00000010
 const byte PelcoMessage::PANLEFT      = 4; 	// Binary : b00000100
@@ -13,6 +13,20 @@ const byte PelcoMessage::THROTTLEDOWN = 64;	// Binary : b01000000
 
 PelcoMessage::PelcoMessage(const byte rawMessage[7])
 {
+	this->_syncByte = rawMessage[0];
+	this->_cameraAddress = rawMessage[1];
+	this->_command1 = rawMessage[2];
+	this->_command2 = rawMessage[3];
+	this->_data1 = rawMessage[4];
+	this->_data2 = rawMessage[5];
+	this->_checksum = rawMessage[6];
+}
+
+PelcoMessage::PelcoMessage(const PelcoBuffer &buffer)
+{
+	const byte			*rawMessage;
+
+	rawMessage = buffer.getBytes();
 	this->_syncByte = rawMessage[0];
 	this->_cameraAddress = rawMessage[1];
 	this->_command1 = rawMessage[2];
@@ -38,8 +52,12 @@ byte				PelcoMessage::calculateChecksum() const
 	// See http://www.codeproject.com/Articles/8034/Pelco-P-and-D-protocol-implementation-in-C
 	// and http://www.commfront.com/RS232_Examples/CCTV/Pelco_D_Pelco_P_Examples_Tutorial.HTM
 
+	unsigned int	sum;
+
+	sum = _cameraAddress + _command1 + _command2 + _data1 + _data2;
+	sum %= 256;
 	// Const problems due to bitset<8>, need to be done with arduino byte's type built-in
-	return (this->_checksum);
+	return (sum);
 }
 
 bool				PelcoMessage::isADirectionCommand() const
