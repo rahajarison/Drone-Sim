@@ -56,7 +56,7 @@ void			PelcoBuffer::acquire()
 		{
 			while (Serial3.available() > 0 && !this->isComplete())
 			{
-				_buffer[_size - 1] = Serial3.read();
+				_buffer[_size] = Serial3.read();
 				++(this->_size);
 			}
 		}
