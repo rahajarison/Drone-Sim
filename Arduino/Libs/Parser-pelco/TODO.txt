@@ -1,3 +1,3 @@
 The Yaw command
 PID / LBMPC ? 
-Rendre plus générique la liaison série à prendre en compte
+Make a generic version of the serial connection
