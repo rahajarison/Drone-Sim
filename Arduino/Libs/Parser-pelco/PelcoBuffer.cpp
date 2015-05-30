@@ -1,7 +1,7 @@
 #include	"Arduino.h"
 #include	"PelcoBuffer.h"
 
-PelcoBuffer::PelcoBuffer()
+PelcoBuffer::PelcoBuffer(HardwareSerial& serial) : _serial(serial)
 {
 	this->flush();
 }
@@ -42,9 +42,9 @@ void			PelcoBuffer::acquire()
 	{
 		if (this->_size == 0)
 		{
-			while (Serial3.available() > 0 && toParse != SYNCVALUE)
+			while (_serial.available() > 0 && toParse != SYNCVALUE)
 			{
-				toParse = Serial3.read();
+				toParse = _serial.read();
 			}
 			if (toParse == SYNCVALUE)
 			{
@@ -54,9 +54,9 @@ void			PelcoBuffer::acquire()
 		}
 		else
 		{
-			while (Serial3.available() > 0 && !this->isComplete())
+			while (_serial.available() > 0 && !this->isComplete())
 			{
-				_buffer[_size] = Serial3.read();
+				_buffer[_size] = _serial.read();
 				++(this->_size);
 			}
 		}

@@ -4,6 +4,8 @@
 #include			"PelcoMessage.h"
 
 MockSerial			Serial;
+MockSerial			Serial1;
+MockSerial			Serial2;
 MockSerial			Serial3;
 
 int					main(int argc, char *argv[])

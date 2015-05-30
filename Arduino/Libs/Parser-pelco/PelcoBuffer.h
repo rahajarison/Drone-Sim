@@ -9,7 +9,7 @@
 class PelcoBuffer
 {
 public:
-	PelcoBuffer();
+	PelcoBuffer(HardwareSerial& serial);
 	virtual ~PelcoBuffer();
 
 	unsigned int					getSize() const;
@@ -22,6 +22,7 @@ public:
 private:
 	byte							_buffer[PELCOBUFFERSIZE];
 	unsigned int					_size;
+	HardwareSerial&					_serial;
 };
 
 #endif /* !PELCOBUFFER_H_ */

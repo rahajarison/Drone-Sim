@@ -1,26 +1,42 @@
-#ifndef					ARDUINO_H_
-# define				ARDUINO_H_
+#ifndef						ARDUINO_H_
+# define					ARDUINO_H_
 
-# include				<string>
+# include					<string>
 
-# define	HEX			(16)
+# define	HEX				(16)
 
-typedef		unsigned char byte;
+typedef		unsigned char 	byte;
 
-class 			MockSerial
+class						HardwareSerial
 {
 public:
-	byte			available();
-	byte 			read();
-	void			print(byte toPrint);
-	void			print(byte toPrint, byte format);
-	void			print(std::string toPrint);
-	void			println(byte toPrint);	
-	void			println(byte toPrint, byte format);
-	void			println(std::string toPrint);	
+	virtual byte			available();
+	virtual byte 			read();
+	virtual void			print(byte toPrint);
+	virtual void			print(byte toPrint, byte format);
+	virtual void			print(std::string toPrint);
+	virtual void			println(byte toPrint);	
+	virtual void			println(byte toPrint, byte format);
+	virtual void			println(std::string toPrint);	
+private:
 };
 
-extern MockSerial	Serial;
-extern MockSerial	Serial3;
+class 						MockSerial
+{
+public:
+	virtual byte			available();
+	virtual byte 			read();
+	virtual void			print(byte toPrint);
+	virtual void			print(byte toPrint, byte format);
+	virtual void			print(std::string toPrint);
+	virtual void			println(byte toPrint);	
+	virtual void			println(byte toPrint, byte format);
+	virtual void			println(std::string toPrint);	
+};
+
+extern MockSerial			Serial;
+extern MockSerial			Serial1;
+extern MockSerial			Serial2;
+extern MockSerial			Serial3;
 
 #endif
