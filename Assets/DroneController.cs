@@ -9,10 +9,14 @@ public class DroneController : MonoBehaviour {
 	public Text	rollText;
 
 	public ArduinoCommunicator	arduino;
+	public MotorSimulator motors;
+
 	public delegate void pong();
 
 	float throttle = 0f;
 	float yaw = 0f;
+	float pitch = 0f;
+	float roll = 0f;
 
 	bool	sended = false;
 
@@ -27,22 +31,28 @@ public class DroneController : MonoBehaviour {
 	void Update () {
 		throttle = Input.GetAxis("Throttle") * Time.deltaTime;
 		yaw = Input.GetAxisRaw ("Yaw") * Time.deltaTime;
-
+		pitch = Input.GetAxisRaw("Pitch") * Time.deltaTime;
+		roll = Input.GetAxisRaw("Roll") * Time.deltaTime;
 	
-
 		throttleText.text = "Gaz : " + throttle;
 		yawText.text = "Lacet : " + yaw;
-		pitchText.text = "Angle d attaque : " + Input.GetAxisRaw("Pitch") * Time.deltaTime;
-		rollText.text = "Roulis : " + Input.GetAxisRaw("Roll") * Time.deltaTime;
-	
-		pingArduino ();
+		pitchText.text = "Angle d attaque : " + pitch;
+		rollText.text = "Roulis : " + roll;
+		motors.setGeneralThrottle(calculatePercentage(throttle, 0, maxInputValue) / 100f);
+		motors.setPitchAngle(calculatePercentage(pitch, -maxInputValue, maxInputValue) / 100f);
+		// pingArduino ();
 	}
 
 
 	byte calculatePercentage(float value, float min, float max)
 	{
-		return (byte) Mathf.RoundToInt(((value + max) * 100) / (max - min));
+		value = Mathf.Clamp(value, min, max);
+		if (min >= 0)
+			return (byte) Mathf.RoundToInt((value * 100) / (max - min));
+		else
+			return (byte) Mathf.RoundToInt((value + max * 100) / (max - min));
 	}
+	
 
 	void			sendCommand(byte toSend)
 	{

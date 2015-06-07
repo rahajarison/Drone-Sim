@@ -553,7 +553,7 @@ ConstantForce:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304771589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0, z: 0}
   m_RelativeForce: {x: 0, y: 4, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
@@ -989,6 +989,9 @@ GameObject:
   - 33: {fileID: 1268102207}
   - 65: {fileID: 1268102206}
   - 23: {fileID: 1268102205}
+  - 54: {fileID: 1268102210}
+  - 138: {fileID: 1268102209}
+  - 138: {fileID: 1268102208}
   m_Layer: 0
   m_Name: Plateforme centrale
   m_TagString: Untagged
@@ -1051,6 +1054,43 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268102203}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!138 &1268102208
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268102203}
+  m_ConnectedBody: {fileID: 1380741902}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+--- !u!138 &1268102209
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268102203}
+  m_ConnectedBody: {fileID: 825595816}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+--- !u!54 &1268102210
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268102203}
+  serializedVersion: 2
+  m_Mass: .400000006
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1311430750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1201,7 @@ ConstantForce:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1311430750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0, z: 0}
   m_RelativeForce: {x: 0, y: 4, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
@@ -1435,7 +1475,7 @@ ConstantForce:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1442179340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0, z: 0}
   m_RelativeForce: {x: 0, y: 4, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
@@ -1740,7 +1780,7 @@ ConstantForce:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655602623}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0, z: 0}
   m_RelativeForce: {x: 0, y: 4, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
@@ -1952,7 +1992,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807457007}
   m_LocalRotation: {x: .0664515719, y: -.811503947, z: .0682677552, w: .57652843}
-  m_LocalPosition: {x: 6.10300016, y: 1.52600002, z: 2.26799989}
+  m_LocalPosition: {x: 3.52999997, y: 1, z: 1.36000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2087,9 +2127,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1999268440}
-  - 54: {fileID: 1999268441}
-  - 75: {fileID: 1999268442}
   - 114: {fileID: 1999268444}
+  - 114: {fileID: 1999268443}
+  - 114: {fileID: 1999268445}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -2112,32 +2152,19 @@ Transform:
   - {fileID: 1380741901}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!54 &1999268441
-Rigidbody:
+--- !u!114 &1999268443
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1999268439}
-  serializedVersion: 2
-  m_Mass: .400000006
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &1999268442
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999268439}
-  m_Enabled: 0
-  m_Force: {x: 0, y: 4, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd663e76ccdc6ba4792620121b3d084b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialPort: COM3
+  bauds: 9600
 --- !u!114 &1999268444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,7 +2180,29 @@ MonoBehaviour:
   yawText: {fileID: 7421078}
   pitchText: {fileID: 378506282}
   rollText: {fileID: 277485222}
-  arduino: {fileID: 0}
+  arduino: {fileID: 1999268443}
+  motors: {fileID: 1999268445}
+--- !u!114 &1999268445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999268439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48a9bc4738c42440999f37065608b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorFR: {fileID: 1655602629}
+  motorBR: {fileID: 304771595}
+  motorFL: {fileID: 1442179346}
+  motorBL: {fileID: 1311430756}
+  maxThrust: .870000005
+  maxPitchAngle: 7
+  maxRollAngle: 7
+  maxVerticalSpeed: 0
+  maxYaxSpeed: 0
+  maxThrustAuthorized: 0
 --- !u!1 &1999929134
 GameObject:
   m_ObjectHideFlags: 0
